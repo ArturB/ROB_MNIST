@@ -22,11 +22,11 @@ tstv = tstv(:, toRemain);
 tvec = pcaTransform(tvec, mupca, trmxpca);
 tstv = pcaTransform(tstv, mupca, trmxpca);
 
-% save PCA-ed images to CSV files
-csvwrite(csvnames{1,1},tvec) % train-images
-csvwrite(csvnames{2,1},tlab) % train-labels
-csvwrite(csvnames{3,1},tstv) % t10k-images (test-images)
-csvwrite(csvnames{4,1},tstl) % t10k-labels (test-labels)
+% save PCA-ed images to CSV files. Each vector is - as in valid algebra - a column vector, not row. 
+csvwrite(csvnames{1,1},tvec.') % train-images
+csvwrite(csvnames{2,1},tlab.') % train-labels
+csvwrite(csvnames{3,1},tstv.') % t10k-images (test-images)
+csvwrite(csvnames{4,1},tstl.') % t10k-labels (test-labels)
 
 % proper vector must be a column, by definition. Also, input vector must contain a bias
 %tvec = [tvec ones(rows(tvec),1)];
